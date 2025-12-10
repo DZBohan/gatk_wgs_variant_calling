@@ -35,6 +35,9 @@ Remove low-quality variants and generate the final high-confidence cohort.filter
 
 Annotate variants with gene information, amino acid changes, predicted impact, etc.
 
-9. Extract PSEN2 Coding Variants
+9. Extract Coding Variants for specific genes
 
-Select variants within the PSEN2 coding region and output them in VCF or TSV format.
+Select variants within the coding region of specific genes and output them in VCF or TSV format.
+
+flowchart1
+
