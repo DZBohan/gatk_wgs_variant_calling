@@ -1,4 +1,4 @@
-# gatk_wgs_variant_calling
+# GATK WGS Variant Calling
 
 This repository provides a complete GATK Best Practices Germline Variant Calling Pipeline for WGS (Whole Genome Sequencing) data. It covers alignment, variant calling, joint genotyping, filtering, annotation, and variant extraction for specific genes.
 
