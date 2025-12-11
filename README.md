@@ -102,3 +102,34 @@ Homo_sapiens_assembly38.dbsnp138.vcf.idx
 Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi
 1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi
 ```
+
+### Alignment (Script A)
+
+Edit and submit the Slurm script [`sample1_alignment.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/sample1_alignment.sh) to run alignment and output the following files. Check the flagstat file to see the QC.
+
+```
+sample1.hg38.sorted.bam
+sample1.hg38.sorted.bam.bai
+sample1.hg38.sorted.flagstat.txt
+```
+
+### VCF Generation (Script B)
+
+Edit and submit the Slurm script [`sample1_gatk_gvcf.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/sample1_gatk_gvcf.sh) to generate the VCF file per sample. This script includes `MarkDuplicates`, `BaseRecalibrator`, `ApplyBQSR`, and `HaplotypeCaller`. The following files are the output files of the script. Check `dedup.metrics` to see the duplication QC.
+
+```
+sample1.hg38.dedup.bai
+sample1.hg38.dedup.bam
+sample1.hg38.dedup.bqsr.bai
+sample1.hg38.dedup.bqsr.bam
+sample1.hg38.dedup.metrics.txt
+sample1.hg38.g.vcf.gz
+sample1.hg38.g.vcf.gz.tbi
+sample1..hg38.recal.table
+```
+
+### Joint Calling (Script C)
+
+Edit and submit the Slurm script [`joint_calling.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/joint_calling.sh) to merge the VCF files to get a cohort VCF file. This script includes `GenomicsDBImport` and `GenotypeGVCFs`.
+
+During Joint Calling, only the 24 canonical chromosomes (chr1–chr22, chrX, chrY) were included. Non-canonical contigs (e.g., chrM and unlocalized/unplaced scaffolds such as chr1_KI…, chrUn…) were excluded.
