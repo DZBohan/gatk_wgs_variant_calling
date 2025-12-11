@@ -115,17 +115,11 @@ sample1.hg38.sorted.flagstat.txt
 
 ### VCF Generation (Script B)
 
-Edit and submit the Slurm script [`sample1_gatk_gvcf.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/sample1_gatk_gvcf.sh) to generate the VCF file per sample. This script includes `MarkDuplicates`, `BaseRecalibrator`, `ApplyBQSR`, and `HaplotypeCaller`. The following files are the output files of the script. Check `dedup.metrics` to see the duplication QC.
+Edit and submit the Slurm script [`sample1_gatk_gvcf.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/sample1_gatk_gvcf.sh) to generate the VCF file per sample. This script includes `MarkDuplicates`, `BaseRecalibrator`, `ApplyBQSR`, and `HaplotypeCaller`. The following files are the outputs used as inputs in the next step. Check `sample1.hg38.dedup.metrics.txt` to see the duplication QC.
 
 ```
-sample1.hg38.dedup.bai
-sample1.hg38.dedup.bam
-sample1.hg38.dedup.bqsr.bai
-sample1.hg38.dedup.bqsr.bam
-sample1.hg38.dedup.metrics.txt
 sample1.hg38.g.vcf.gz
 sample1.hg38.g.vcf.gz.tbi
-sample1..hg38.recal.table
 ```
 
 ### Joint Calling (Script C)
@@ -133,3 +127,14 @@ sample1..hg38.recal.table
 Edit and submit the Slurm script [`joint_calling.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/joint_calling.sh) to merge the VCF files to get a cohort VCF file. This script includes `GenomicsDBImport` and `GenotypeGVCFs`.
 
 During Joint Calling, only the 24 canonical chromosomes (chr1–chr22, chrX, chrY) were included. Non-canonical contigs (e.g., chrM and unlocalized/unplaced scaffolds such as chr1_KI…, chrUn…) were excluded.
+
+The following files are the outputs used as inputs in the next step.
+
+```
+cohort.raw.vcf.gz
+cohort.raw.vcf.gz.tbi
+```
+
+### Variant Filtering (Script D)
+
+Edit and submit the Slurm script `variant_filter.sh`
