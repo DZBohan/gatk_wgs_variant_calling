@@ -49,8 +49,6 @@ samtools 1.22.1
 bwa-mem2 2.2.1
 gatk 4.6.2.0
 snpEff 4.5covid19
-bgzip (htslib) 1.22.1
-tabix (htslib) 1.22.1
 ```
 
 Use the following command to create a conda environment `wgs`, including samtools, bwa-mem2, and gatk.
