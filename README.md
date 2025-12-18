@@ -48,12 +48,14 @@ conda 25.5.1
 samtools 1.22.1
 bwa-mem2 2.2.1
 gatk 4.6.2.0
+snpEff 4.5covid19
+htslib 25.5.1
 ```
 
 Use the following command to create a conda environment `wgs`, including samtools, bwa-mem2, and gatk.
 
 ```
-conda create -n wgs -c bioconda -c conda-forge bwa-mem2 samtools gatk4
+conda create -n wgs -c bioconda -c conda-forge bwa-mem2 samtools gatk4 snpeff
 ```
 
 Use the following commands to activate the environment and check the tool versions.
