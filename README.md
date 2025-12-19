@@ -128,7 +128,7 @@ sample1.hg38.g.vcf.gz.tbi
 
 ### Joint Calling (Script C)
 
-Edit and submit the Slurm script [`joint_calling.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/joint_calling.sh) to merge the VCF files to get a cohort VCF file. This script includes `GenomicsDBImport` and `GenotypeGVCFs`.
+Edit and submit the Slurm script [`joint_calling.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/joint_calling.sh) to do a joint calling to get a cohort VCF file. This script includes `GenomicsDBImport` and `GenotypeGVCFs`.
 
 During Joint Calling, only the 24 canonical chromosomes (chr1–chr22, chrX, chrY) were included. Non-canonical contigs (e.g., chrM and unlocalized/unplaced scaffolds such as chr1_KI…, chrUn…) were excluded.
 
@@ -141,4 +141,25 @@ cohort.raw.vcf.gz.tbi
 
 ### Variant Filtering (Script D)
 
-Edit and submit the Slurm script `variant_filter.sh`
+Edit and submit the Slurm script [`variant_filter.sh`](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/scripts/variant_filter.sh) do filtering and remove low-quality variants. This script includes `SelectVariants` and `VariantFiltration`.
+
+The following flags are the default parameter setting in the `VariantFiltration` of SNP and INDEL. You can adjust them according to your project.
+
+```
+# SNP
+  --filter-name "SNP_QD_lt2"        --filter-expression "QD < 2.0" \
+  --filter-name "SNP_FS_gt60"       --filter-expression "FS > 60.0" \
+  --filter-name "SNP_SOR_gt3"       --filter-expression "SOR > 3.0" \
+  --filter-name "SNP_MQ_lt40"       --filter-expression "MQ < 40.0" \
+  --filter-name "SNP_MQRankSum_lt-12.5" --filter-expression "MQRankSum < -12.5" \
+  --filter-name "SNP_ReadPosRankSum_lt-8" --filter-expression "ReadPosRankSum < -8.0" \
+```
+
+```
+# INDEL
+  --filter-name "INDEL_QD_lt2"        --filter-expression "QD < 2.0" \
+  --filter-name "INDEL_FS_gt200"      --filter-expression "FS > 200.0" \
+  --filter-name "INDEL_SOR_gt10"      --filter-expression "SOR > 10.0" \
+  --filter-name "INDEL_ReadPosRankSum_lt-20" --filter-expression "ReadPosRankSum < -20.0" \
+```
+
