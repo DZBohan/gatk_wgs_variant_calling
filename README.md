@@ -41,6 +41,8 @@ Select variants within the coding region of specific genes and output them in VC
 
 ![flowchart1](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/images/flowchart1.png?raw=true)
 
+![flowchart2](https://github.com/DZBohan/gatk_wgs_variant_calling/blob/main/images/flowchart2.png?raw=true)
+
 ### Dependencies
 
 ```
