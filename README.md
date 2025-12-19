@@ -35,7 +35,7 @@ Remove low-quality variants and generate the final high-confidence cohort.filter
 
 Annotate variants with gene information, amino acid changes, predicted impact, etc.
 
-9. Extract Coding Variants for specific genes
+9. Extract Coding Variants for specific genes (not shown in this pipeline)
 
 Select variants within the coding region of specific genes and output them in VCF or TSV format.
 
