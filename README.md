@@ -163,3 +163,6 @@ The following flags are the default parameter setting in the `VariantFiltration`
   --filter-name "INDEL_ReadPosRankSum_lt-20" --filter-expression "ReadPosRankSum < -20.0" \
 ```
 
+The following files are the outputs used as inputs in the next step.
+
+```
