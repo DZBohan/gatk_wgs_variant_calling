@@ -166,3 +166,25 @@ The following flags are the default parameter setting in the `VariantFiltration`
 The following files are the outputs used as inputs in the next step.
 
 ```
+cohort.filtered.vcf.gz
+cohort.filtered.vcf.gz.tbi
+```
+
+### SnpEff Annotation (Script E)
+
+Edit and submit the Slurm script [`snpeff_annotate.sh`](snpeff_annotate.sh) to annotate the filtered variants with gene and functional information. This script uses `snpEff` with the `GRCh38.99` database and the `-canon` flag to report only canonical transcript annotations.
+
+Before running Script E, make sure the snpEff database is built. You need the reference genome FASTA and GTF annotation file to build a custom snpEff database. Refer to the [snpEff documentation](https://pcingola.github.io/SnpEff/) for details on building a database with `snpEff build`.
+
+The following files are the final outputs.
+
+```
+cohort.filtered.snpeff.vcf.gz
+cohort.filtered.snpeff.vcf.gz.tbi
+cohort.filtered.snpeff.summary.html
+cohort.filtered.snpeff.summary.csv
+```
+
+- `cohort.filtered.snpeff.vcf.gz` — Annotated VCF with `ANN` fields added to the INFO column, including gene name, variant effect, impact level (HIGH/MODERATE/LOW/MODIFIER), amino acid change, etc.
+- `cohort.filtered.snpeff.summary.html` — Interactive HTML report summarizing variant counts by type, impact, genomic region, and other statistics.
+- `cohort.filtered.snpeff.summary.csv` — CSV version of the summary statistics for downstream programmatic use.
